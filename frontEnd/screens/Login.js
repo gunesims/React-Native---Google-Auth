@@ -20,7 +20,7 @@ export default function LogIn({navigation}) {
   }, []);
 
   GoogleSignin.configure({
-    webClientId: '',
+    webClientId: '144983104230-tuksefp5khlmbae04uidellgenoa5am2.apps.googleusercontent.com',
   });
 
   const handleGoogleLogin = () => {
