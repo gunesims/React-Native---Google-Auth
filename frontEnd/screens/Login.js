@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import * as Font from 'expo-font';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
 
 export default function LogIn({navigation}) {
-  const [usuario, setUsuario] = useState('');
-  const [contrasena, setContrasena] = useState('');
   const [fontLoaded, setFontLoaded] = useState(false);
   const googleIco = require("../assets/google.png");
 
