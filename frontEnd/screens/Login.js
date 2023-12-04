@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, Pressable } from 'react-native';
 import * as Font from 'expo-font';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
+
 
 export default function LogIn({navigation}) {
   const [usuario, setUsuario] = useState('');
@@ -23,10 +25,19 @@ export default function LogIn({navigation}) {
     webClientId: '144983104230-tuksefp5khlmbae04uidellgenoa5am2.apps.googleusercontent.com',
   });
 
-  const handleGoogleLogin = () => {
-    // Implementa la lógica de inicio de sesión con Google aquí
-    console.log('Iniciando sesión con Google');
-  };
+  async function onGoogleButtonPress() {
+    // Check if your device supports Google Play
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+  
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+  }
+
 
   if (!fontLoaded) {
     return null; // Espera hasta que la fuente se cargue
@@ -38,23 +49,9 @@ export default function LogIn({navigation}) {
         source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/c/cc/Universidad_don_bosco.jpg' }}
         style={styles.logo}
       />
-      <Text style={styles.label}>Usuario:</Text>
-      <TextInput
-        style={styles.input}
-        value={usuario}
-        onChangeText={setUsuario}
-        placeholder="Usuario"
-      />
-      <Text style={styles.label}>Contraseña:</Text>
-      <TextInput
-        style={styles.input}
-        value={contrasena}
-        onChangeText={setContrasena}
-        secureTextEntry={true}
-        placeholder="Contraseña"
-      />
+      <Text style={styles.label}>Logueo mediante Google | Firebase</Text>
       <View style={styles.buttonContainer}>
-        <Pressable onPress={handleGoogleLogin}>
+        <Pressable onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
           <Image source={googleIco} style={styles.googleImg}/>
         </Pressable>
       </View>
