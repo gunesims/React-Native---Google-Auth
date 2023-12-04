@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, Pressable } from 'react-native';
 import * as Font from 'expo-font';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 export default function LogIn({navigation}) {
   const [usuario, setUsuario] = useState('');
@@ -18,6 +19,9 @@ export default function LogIn({navigation}) {
     })();
   }, []);
 
+  GoogleSignin.configure({
+    webClientId: '',
+  });
 
   const handleGoogleLogin = () => {
     // Implementa la lógica de inicio de sesión con Google aquí
@@ -34,7 +38,21 @@ export default function LogIn({navigation}) {
         source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/c/cc/Universidad_don_bosco.jpg' }}
         style={styles.logo}
       />
-      <Text style={styles.label}>Logueo con Google y FireBase</Text>
+      <Text style={styles.label}>Usuario:</Text>
+      <TextInput
+        style={styles.input}
+        value={usuario}
+        onChangeText={setUsuario}
+        placeholder="Usuario"
+      />
+      <Text style={styles.label}>Contraseña:</Text>
+      <TextInput
+        style={styles.input}
+        value={contrasena}
+        onChangeText={setContrasena}
+        secureTextEntry={true}
+        placeholder="Contraseña"
+      />
       <View style={styles.buttonContainer}>
         <Pressable onPress={handleGoogleLogin}>
           <Image source={googleIco} style={styles.googleImg}/>

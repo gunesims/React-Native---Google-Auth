@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "144983104230",
+    "project_id": "foro2-c7ec1",
+    "storage_bucket": "foro2-c7ec1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144983104230:android:3ac1e048e8e48a3dd5b927",
+        "android_client_info": {
+          "package_name": "com.jordan.zelaya99.frontEnd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQNNAW-c6MW_pthMZi-x5qvpBDSrPPWXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

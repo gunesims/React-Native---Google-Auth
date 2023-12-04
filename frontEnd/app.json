@@ -2,6 +2,7 @@
   "expo": {
     "name": "frontEnd",
     "slug": "frontEnd",
+    "plugins": ["@react-native-google-signin/google-signin"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,21 +17,22 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.frontEnd"
+      "googleServicesFile": "./google-services.json"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.frontEnd"
+      "package": "com.jordan.zelaya99.frontEnd"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "9dfe11b3-ebb5-4967-8d5c-b3b8f1999015"
+        "projectId": "fe0a0dd5-ea5d-48ac-a25b-4a8f13c73137"
       }
     }
   }
